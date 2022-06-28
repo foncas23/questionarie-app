@@ -1,0 +1,36 @@
+<ng-container *ngIf="checkAnswersQuestion()">
+
+
+
+
+  <div class="row no-gutters">
+    <div class="col-12 text-center mt -4 mb-4">
+      <h1>{{question}}</h1>
+    </div>
+  </div>
+
+  <div class="row no-gutters">
+    <button type="button" class="btn btn-primary rounded-0 col-sm-3 col-12" *ngFor="let obj of answers; let index=index"
+      [ngClass]="'col-sm-'+(12/answers.length)" (click)="checkAnswerIndex(index)">
+      {{obj.answer}}
+    </button>
+  </div>
+
+  <div class="row">
+    <div class="alert alert-primary mt-4 text-center w-100" role="alert" *ngIf="answerChoosed && answerCorrect">
+      <strong>Correcto!!!!</strong>
+    </div>
+
+    <div class="alert alert-danger mt-4  text-center w-100" role="alert" *ngIf="answerChoosed && !answerCorrect">
+      <strong>Incorrecto!!!!</strong>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="!checkAnswersQuestion()">
+  <div class="row no-gutters">
+    <div class="col-12 text-center mt -4 mb-4">
+      <span>Revisa la pregunta y las respuestas</span>
+    </div>
+  </div>
+
+</ng-container>
